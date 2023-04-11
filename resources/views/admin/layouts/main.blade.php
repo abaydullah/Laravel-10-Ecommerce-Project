@@ -231,6 +231,16 @@
                             </p>
                         </a>
 
+
+                    <li class="nav-item ">
+                        <a href="{{route('admin.coupons.index')}}" class="nav-link {{request()->segment(2) === 'coupons' ? 'active' : ''}}">
+                            <i class="nav-icon fas fa-folder-open"></i>
+                            <p>
+                                Coupons
+
+                            </p>
+                        </a>
+
                     </li>
                     <li class="nav-item">
                         <a href="pages/widgets.html" class="nav-link">

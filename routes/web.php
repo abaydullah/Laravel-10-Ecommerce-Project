@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,5 +42,6 @@ Route::middleware(['auth', 'access:admin'])->name('admin.')->prefix('admin')->gr
  Route::get('/dashboard', [HomeController::class, 'admin'])->name('home');
 Route::resource('categories',CategoryController::class);
 Route::resource('brands',BrandController::class);
+Route::resource('coupons',CouponController::class);
 });
 
