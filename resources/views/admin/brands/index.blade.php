@@ -9,7 +9,6 @@
     <!-- Toastr -->
     <link rel="stylesheet" href="{{asset('/admin/plugins/toastr/toastr.min.css')}}"
 @endpush
-@section('title','Categories')
 @section('content')
 
     <!-- Content Wrapper. Contains page content -->
@@ -19,12 +18,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Categories</h1>
+                        <h1>Brands</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Categories</li>
+                            <li class="breadcrumb-item active">Brands</li>
                         </ol>
                     </div>
                 </div>
@@ -40,7 +39,7 @@
                         <div class="card">
                             <div class="d-flex justify-content-between px-5 py-3">
                                 <div class="">
-                                    <h3 class="card-title">Categories</h3>
+                                    <h3 class="card-title">Brands</h3>
                                 </div>
                                 <div class="">
                                     @if(session('delete'))
@@ -52,7 +51,7 @@
                                 </div>
                                <div class="">
                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
-                                       Add Category
+                                       Add brand
                                    </button>
                                </div>
 
@@ -70,15 +69,15 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @forelse($categories as $key => $category)
+                                    @forelse($brands as $key => $brand)
                                     <tr>
                                         <td>{{$key+1}}</td>
-                                        <td>{{$category->name}}</td>
-                                        <td>{{$category->slug}}</td>
-                                        <td>{{$category->order}}</td>
-                                        <td><button class="btn btn-info" data-name="{{$category->name}}" data-id="{{$category->id}}" data-order="{{$category->order}}" data-toggle="modal" data-target="#edit">Edit</button>
+                                        <td>{{$brand->name}}</td>
+                                        <td>{{$brand->slug}}</td>
+                                        <td>{{$brand->order}}</td>
+                                        <td><button class="btn btn-info" data-name="{{$brand->name}}" data-id="{{$brand->id}}" data-order="{{$brand->order}}" data-toggle="modal" data-target="#edit">Edit</button>
                                             <a href="#" onclick="event.preventDefault(); document.getElementById('delete-form').submit();" class="btn btn-danger">Delete</a>
-                                            <form action="{{route('admin.categories.destroy',$category->id)}}" method="post" id="delete-form">
+                                            <form action="{{route('admin.brands.destroy',$brand->id)}}" method="post" id="delete-form">
                                                 @csrf
                                                 @method('delete')
                                             </form>
@@ -86,7 +85,7 @@
                                     </tr>
                                     @empty
                                     <tr>
-                                        <td>Category Not Found</td>
+                                        <td>Brand Not Found</td>
 
                                     </tr>
                                     @endforelse
@@ -118,12 +117,12 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Add Category</h4>
+                        <h4 class="modal-title">Default Modal</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="{{ route('admin.categories.store') }}" method="post">
+                    <form action="{{ route('admin.brands.store') }}" method="post">
                         @csrf
                     <div class="modal-body">
 
@@ -157,12 +156,12 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Edit Category</h4>
+                        <h4 class="modal-title">Edit Brand</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="{{ route('admin.categories.update','test') }}" method="post">
+                    <form action="{{ route('admin.brands.update','test') }}" method="post">
                         @csrf
                         @method('patch')
 

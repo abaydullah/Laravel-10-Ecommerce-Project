@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Admin | Dashboard - {{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title') - {{ config('app.name', 'Laravel') }}</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -203,7 +203,7 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-                    <li class="nav-item menu-open">
+                    <li class="nav-item">
                         <a href="{{route('admin.home')}}" class="nav-link {{request()->segment(2) === 'dashboard' ? 'active' : ''}}">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
@@ -213,10 +213,20 @@
 
                     </li>
                     <li class="nav-item ">
-                        <a href="{{route('admin.categories.index')}}" class="nav-link {{request()->segment(2) === 'dashboard' ? 'active' : ''}}">
+                        <a href="{{route('admin.categories.index')}}" class="nav-link {{request()->segment(2) === 'categories' ? 'active' : ''}}">
                             <i class="nav-icon fas fa-folder-open"></i>
                             <p>
                                 Categories
+
+                            </p>
+                        </a>
+
+                    </li>
+                    <li class="nav-item ">
+                        <a href="{{route('admin.brands.index')}}" class="nav-link {{request()->segment(2) === 'brands' ? 'active' : ''}}">
+                            <i class="nav-icon fas fa-folder-open"></i>
+                            <p>
+                                Brands
 
                             </p>
                         </a>
