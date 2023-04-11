@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,8 +36,8 @@ Route::middleware(['auth', 'access:user'])->group(function () {
 All Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
-Route::middleware(['auth', 'access:admin'])->group(function () {
- Route::get('/admin/dashboard', [HomeController::class, 'admin'])->name('admin.home');
-
+Route::middleware(['auth', 'access:admin'])->name('admin.')->group(function () {
+ Route::get('/admin/dashboard', [HomeController::class, 'admin'])->name('home');
+Route::resource('categories',CategoryController::class);
 });
 

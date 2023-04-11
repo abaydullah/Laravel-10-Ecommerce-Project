@@ -14,10 +14,13 @@
     <link rel="stylesheet" href="{{asset('/assets/admin/plugins/fontawesome-free/css/all.min.css')}}">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{asset('/assets/admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
+@stack('css')
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('/assets/admin/dist/css/adminlte.min.css')}}">
+
 </head>
-<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+{{--dark-mode--}}
+<body class="hold-transition  sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
 
     <!-- Preloader -->
@@ -210,27 +213,14 @@
 
                     </li>
                     <li class="nav-item ">
-                        <a href="#" class="nav-link {{request()->segment(2) === 'dashboard' ? 'active' : ''}}">
+                        <a href="{{route('admin.categories.index')}}" class="nav-link {{request()->segment(2) === 'dashboard' ? 'active' : ''}}">
                             <i class="nav-icon fas fa-folder-open"></i>
                             <p>
                                 Categories
-                                <i class="right fas fa-angle-left"></i>
+
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item ">
-                                <a href="./index.html" class="nav-link {{request()->segment(2) === 'dashboard' ? 'active' : ''}}">
-                                    <i class="fas fa-plus nav-icon"></i>
-                                    <p>Add Category</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="./index2.html" class="nav-link {{request()->segment(2) === 'dashboard' ? 'active' : ''}}">
-                                    <i class="fas fa-list nav-icon"></i>
-                                    <p>Categories</p>
-                                </a>
-                            </li>
-                        </ul>
+
                     </li>
                     <li class="nav-item">
                         <a href="pages/widgets.html" class="nav-link">
@@ -873,19 +863,10 @@
 <script src="{{asset('/assets/admin/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- overlayScrollbars -->
 <script src="{{asset('/assets/admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+@stack('script')
 <!-- AdminLTE App -->
 <script src="{{asset('/assets/admin/dist/js/adminlte.js')}}"></script>
 
-<!-- PAGE PLUGINS -->
-<!-- jQuery Mapael -->
-<script src="{{asset('/assets/admin/plugins/jquery-mousewheel/jquery.mousewheel.js')}}"></script>
-<script src="{{asset('/assets/admin/plugins/raphael/raphael.min.js')}}"></script>
-<script src="{{asset('/assets/admin/plugins/jquery-mapael/jquery.mapael.min.js')}}"></script>
-<script src="{{asset('/assets/admin/plugins/jquery-mapael/maps/usa_states.min.js')}}"></script>
-<!-- ChartJS -->
-<script src="{{asset('/assets/admin/plugins/chart.js/Chart.min.js')}}"></script>
 
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{asset('/assets/admin/dist/js/pages/dashboard2.js')}}"></script>
 </body>
 </html>
