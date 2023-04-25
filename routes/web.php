@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CouponController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/test', function () {
+
+
     return view('welcome');
 });
 
@@ -38,10 +45,12 @@ Route::middleware(['auth', 'access:user'])->group(function () {
 All Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
-Route::middleware(['auth', 'access:admin'])->name('admin.')->prefix('admin')->group(function () {
+//middleware(['auth', 'access:admin'])->name('admin.')->prefix('admin')->
+Route::group(['middleware' => 'auth','prefix' => 'admin', 'as' => 'admin.'],function () {
  Route::get('/dashboard', [HomeController::class, 'admin'])->name('home');
 Route::resource('categories',CategoryController::class);
 Route::resource('brands',BrandController::class);
 Route::resource('coupons',CouponController::class);
+Route::resource('products',ProductController::class);
 });
 

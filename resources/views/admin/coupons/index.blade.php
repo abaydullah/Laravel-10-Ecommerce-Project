@@ -9,6 +9,7 @@
     <!-- Toastr -->
     <link rel="stylesheet" href="{{asset('/admin/plugins/toastr/toastr.min.css')}}"
 @endpush
+@section('title','Coupons')
 @section('content')
 
     <!-- Content Wrapper. Contains page content -->
@@ -82,8 +83,8 @@
                                             @endif
                                         </td>
                                         <td><button class="btn btn-info" data-code="{{$coupon->code}}" data-percentage="{{$coupon->percentage}}" data-id="{{$coupon->id}}" data-expire_date="{{$coupon->expire_date}}" data-toggle="modal" data-target="#edit">Edit</button>
-                                            <a href="#" onclick="event.preventDefault(); document.getElementById('delete-form').submit();" class="btn btn-danger">Delete</a>
-                                            <form action="{{route('admin.coupons.destroy',$coupon->id)}}" method="post" id="delete-form">
+                                            <a href="#" onclick="event.preventDefault(); document.getElementById('delete-form-'+{{$coupon->id}}).submit();" class="btn btn-danger">Delete</a>
+                                            <form action="{{route('admin.coupons.destroy',$coupon->id)}}" method="post" id="delete-form-{{$coupon->id}}">
                                                 @csrf
                                                 @method('delete')
                                             </form>
@@ -123,7 +124,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Default Modal</h4>
+                        <h4 class="modal-title">Add Coupon</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

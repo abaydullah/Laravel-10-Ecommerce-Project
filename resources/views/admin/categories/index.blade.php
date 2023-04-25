@@ -77,8 +77,8 @@
                                         <td>{{$category->slug}}</td>
                                         <td>{{$category->order}}</td>
                                         <td><button class="btn btn-info" data-name="{{$category->name}}" data-id="{{$category->id}}" data-order="{{$category->order}}" data-toggle="modal" data-target="#edit">Edit</button>
-                                            <a href="#" onclick="event.preventDefault(); document.getElementById('delete-form').submit();" class="btn btn-danger">Delete</a>
-                                            <form action="{{route('admin.categories.destroy',$category->id)}}" method="post" id="delete-form">
+                                            <a href="#" onclick="event.preventDefault(); document.getElementById('delete-form-'+{{$category->id}}).submit();" class="btn btn-danger">Delete</a>
+                                            <form action="{{route('admin.categories.destroy',$category->id)}}" method="post" id="delete-form-{{$category->id}}">
                                                 @csrf
                                                 @method('delete')
                                             </form>
