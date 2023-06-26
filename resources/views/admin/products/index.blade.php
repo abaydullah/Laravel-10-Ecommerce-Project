@@ -51,9 +51,9 @@
                                     @endif
                                 </div>
                                 <div class="">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
-                                        Add Category
-                                    </button>
+                                    <a type="button" class="btn btn-primary" href="{{route('admin.products.create')}}">
+                                        Add Product
+                                    </a>
                                 </div>
 
                             </div>
@@ -85,7 +85,7 @@
                                         <th style="width: 8%" class="text-center">
                                             Status
                                         </th>
-                                        <th style="width: 15%">
+                                        <th style="width: 20%">
                                             Action
                                         </th>
                                     </tr>
@@ -130,7 +130,11 @@
                                             @endif
                                         </td>
                                         <td class="project-state">
-                                            <span class="badge badge-success">Success</span>
+                                            @if($product->status == 1)
+                                            <span class="badge badge-success">Active</span>
+                                            @else
+                                            <span class="badge badge-danger">Inactive</span>
+                                            @endif
                                         </td>
                                         <td class="project-actions text-right">
                                             <a class="btn btn-primary btn-sm" href="#">
@@ -143,11 +147,24 @@
                                                 </i>
 
                                             </a>
-                                            <a class="btn btn-danger btn-sm" onclick="event.preventDefault(); document.getElementById('delete-form-'+{{$product->id}}).submit();">
+                                            <a class="btn btn-danger btn-sm" onclick="deleteData({{$product->id}});">
                                                 <i class="fas fa-trash">
                                                 </i>
 
                                             </a>
+                                            @if($product->status == 0)
+                                            <a class="btn btn-success btn-sm" href="{{route('admin.products.active',$product->id)}}">
+                                                <i class="fas fa-thumbs-up">
+                                                </i>
+
+                                            </a>
+                                            @else
+                                            <a class="btn btn-danger btn-sm" href="{{route('admin.products.inactive',$product->id)}}">
+                                                <i class="fas fa-thumbs-down">
+                                                </i>
+
+                                            </a>
+                                            @endif
                                             <form action="{{route('admin.products.destroy',$product->id)}}" method="post" id="delete-form-{{$product->id}}">
                                                 @csrf
                                                 @method('delete')
@@ -305,6 +322,29 @@
         });
 
 
+        function deleteData(id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-form-'+id).submit();
+
+                }else{
+                    Swal.fire(
+                        'Safe!',
+                        'Your file has been Safe.',
+                        'success'
+                    )
+                }
+            })
+
+        }
     </script>
 
 @endpush

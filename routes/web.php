@@ -52,5 +52,16 @@ Route::resource('categories',CategoryController::class);
 Route::resource('brands',BrandController::class);
 Route::resource('coupons',CouponController::class);
 Route::resource('products',ProductController::class);
+    Route::get('active/products/{id}',[ProductController::class,'active'])->name('products.active');
+    Route::get('inactive/products/{id}',[ProductController::class,'inactive'])->name('products.inactive');
 });
 
+//middleware(['auth', 'access:admin'])->name('admin.')->prefix('admin')->
+Route::group(['middleware' => 'auth','prefix' => 'manager', 'as' => 'manager.'],function () {
+    Route::get('/dashboard', [HomeController::class, 'manager'])->name('home');
+    Route::resource('categories',CategoryController::class);
+    Route::resource('brands',BrandController::class);
+    Route::resource('coupons',CouponController::class);
+    Route::resource('products',ProductController::class);
+
+});

@@ -15,7 +15,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::orderBy('id','asc')->with('categories','brand')->paginate(10);
+        $products = Product::latest()->with('categories','brand')->paginate(10);
         return view('admin.products.index', compact('products'));
     }
 
@@ -232,5 +232,21 @@ class ProductController extends Controller
         }
         $product->delete();
         return redirect()->route('admin.products.index')->with('delete','Product Deleted Successfully');
+    }
+    public function active(string $id)
+    {
+        $product = Product::find($id);
+
+        $product->status = 1;
+        $product->update();
+        return redirect()->route('admin.products.index')->with('create','Product Active Successfully');
+    }
+    public function inactive(string $id)
+    {
+        $product = Product::find($id);
+
+        $product->status = 0;
+        $product->update();
+        return redirect()->route('admin.products.index')->with('delete','Product Inactive Successfully');
     }
 }

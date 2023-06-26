@@ -105,25 +105,26 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="inputName">Main Slider</label><br>
-                                        <input type="checkbox" name="main_slider" checked data-bootstrap-switch data-off-color="danger" data-on-color="success" value="{{$product->main_slider}}">
+                                        <input type="checkbox" name="main_slider"  data-bootstrap-switch data-off-color="danger" data-on-color="success"
+                                            {{$product->main_slider  == 1 ? 'checked' : ''}}>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="inputName">Hot Deals</label><br>
-                                        <input type="checkbox" name="hot_deal" checked data-bootstrap-switch data-off-color="danger" data-on-color="success" value="{{$product->hot_deal}}">
+                                        <input type="checkbox" name="hot_deal" data-bootstrap-switch data-off-color="danger" data-on-color="success"  {{$product->hot_deal  == 1 ? 'checked' : ''}}>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="inputName">Best Rated</label><br>
-                                        <input type="checkbox" name="best_rated" checked data-bootstrap-switch data-off-color="danger" data-on-color="success" value="{{$product->best_rated}}">
+                                        <input type="checkbox" name="best_rated"  data-bootstrap-switch data-off-color="danger" data-on-color="success"  {{$product->best_rated  == 1 ? 'checked' : ''}}>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="inputName">Hot New</label><br>
-                                        <input type="checkbox" name="hot_new" checked data-bootstrap-switch data-off-color="danger" data-on-color="success" value="{{$product->hot_new}}">
+                                        <input type="checkbox" name="hot_new"  data-bootstrap-switch data-off-color="danger" data-on-color="success"  {{$product->hot_new  == 1 ? 'checked' : ''}}>
                                     </div>
                                 </div>
                             </div>
@@ -200,7 +201,7 @@
 
                             <div class="form-group d-flex justify-content-between">
                                 <label for="inputName">Publish : </label>
-                                <input type="checkbox" name="status" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
+                                <input type="checkbox" name="status" data-bootstrap-switch data-off-color="danger" data-on-color="success" {{$product->status  == 1 ? 'checked' : ''}}>
                             </div>
                         </div>
                         <!-- /.card-body -->
@@ -210,8 +211,8 @@
 
             <div class="row">
                 <div class="col-12">
-                    <a href="#" class="btn btn-secondary">Cancel</a>
-                    <input type="submit" value="Create new Product" class="btn btn-success float-right">
+                    <a href="{{route('admin.products.index')}}" class="btn btn-secondary">Back</a>
+                    <input type="submit" value="Product Update" class="btn btn-success float-right">
                 </div>
             </div>
                 </form>

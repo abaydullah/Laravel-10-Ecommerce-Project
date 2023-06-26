@@ -168,7 +168,7 @@
                             </div>
                                 <div class="form-group">
                                     <label for="inputName">Product Color</label>
-                                    <select class="select2" multiple="multiple" data-placeholder="Select a Color" style="width: 100%;" name="color">
+                                    <select class="select2" multiple="multiple" data-placeholder="Select a Color" style="width: 100%;" name="color[]">
 
                                     </select>
                                 </div>
@@ -176,7 +176,7 @@
 
                                 <div class="form-group">
                                     <label for="inputName">Product Size</label>
-                                    <select class="select2" multiple="multiple" data-placeholder="Select a Size" style="width: 100%;" name="size">
+                                    <select class="select2" multiple="multiple" data-placeholder="Select a Size" style="width: 100%;" name="size[]">
                                     </select>
                                 </div>
 
