@@ -76,7 +76,7 @@
                                         <td>{{$category->name}}</td>
                                         <td>{{$category->slug}}</td>
                                         <td>{{$category->order}}</td>
-                                        <td><button class="btn btn-info" data-name="{{$category->name}}" data-id="{{$category->id}}" data-order="{{$category->order}}" data-toggle="modal" data-target="#edit">Edit</button>
+                                        <td><button class="btn btn-info" data-parent_id="{{$category->parent_id}}" data-name="{{$category->name}}" data-id="{{$category->id}}" data-order="{{$category->order}}" data-toggle="modal" data-target="#edit">Edit</button>
                                             <a href="#" onclick="event.preventDefault(); document.getElementById('delete-form-'+{{$category->id}}).submit();" class="btn btn-danger">Delete</a>
                                             <form action="{{route('admin.categories.destroy',$category->id)}}" method="post" id="delete-form-{{$category->id}}">
                                                 @csrf
@@ -133,6 +133,15 @@
                                     <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
                                 </div>
                                 <div class="form-group">
+                                    <label for="parent_id">Parent</label>
+                                    <select name="parent_id" id="parent_id" class="form-control">
+                                        <option value="">Select</option>
+                                        @foreach($categories as $category)
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label for="order">Order</label>
                                     <input type="number" class="form-control" id="order" placeholder="order" name="order">
                                 </div>
@@ -173,6 +182,15 @@
                                     <label for="name">Name</label>
                                     <input type="text" class="form-control" id="name"  name="name">
                                 </div>
+                            <div class="form-group">
+                                <label for="parent_id">Parent</label>
+                                <select name="parent_id" id="parent_id" class="form-control">
+                                    <option value="">Select</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                                 <div class="form-group">
                                     <label for="order">Order</label>
                                     <input type="number" class="form-control" id="order" placeholder="order" name="order">
@@ -222,11 +240,13 @@
 
             var name = button.data('name')
             var order = button.data('order')
+            var parent_id = button.data('parent_id')
             var id = button.data('id')
 
             var modal = $(this)
             modal.find('.modal-body #name').val(name);
             modal.find('.modal-body #order').val(order);
+            modal.find('.modal-body #parent_id').val(parent_id);
             modal.find('.modal-body #id').val(id);
 
         });
