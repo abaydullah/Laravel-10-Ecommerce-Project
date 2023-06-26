@@ -480,127 +480,88 @@
                                         class="fa fa-angle-left pe-2" aria-hidden="true"></i> Back</div>
                             </div>
                             <ul id="sub-menu" class="sm pixelstrap sm-vertical">
-                                <li> <a href="#">TV & Audio</a>
-                                    <ul class="mega-menu clothing-menu">
-                                        <li>
-                                            <div class="row m-0">
-                                                <div class="col-xl-4">
-                                                    <div class="link-section">
-                                                        <h5>women's fashion</h5>
-                                                        <ul>
-                                                            <li><a href="#">dresses</a></li>
-                                                            <li><a href="#">skirts</a></li>
-                                                            <li><a href="#">westarn wear</a></li>
-                                                            <li><a href="#">ethic wear</a></li>
-                                                            <li><a href="#">sport wear</a></li>
-                                                        </ul>
-                                                        <h5>men's fashion</h5>
-                                                        <ul>
-                                                            <li><a href="#">sports wear</a></li>
-                                                            <li><a href="#">western wear</a></li>
-                                                            <li><a href="#">ethic wear</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-4">
-                                                    <div class="link-section">
-                                                        <h5>accessories</h5>
-                                                        <ul>
-                                                            <li><a href="#">fashion jewellery</a></li>
-                                                            <li><a href="#">caps and hats</a></li>
-                                                            <li><a href="#">precious jewellery</a></li>
-                                                            <li><a href="#">necklaces</a></li>
-                                                            <li><a href="#">earrings</a></li>
-                                                            <li><a href="#">wrist wear</a></li>
-                                                            <li><a href="#">ties</a></li>
-                                                            <li><a href="#">cufflinks</a></li>
-                                                            <li><a href="#">pockets squares</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-4">
-                                                    <a href="#" class="mega-menu-banner"><img
-                                                            src="../assets/images/mega-menu/fashion.jpg" alt=""
-                                                            class="img-fluid blur-up lazyload"></a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li> <a href="#">air conditioners</a>
+{{--                                <li> <a href="#">TV & b Audio</a>--}}
+{{--                                    <ul class="mega-menu clothing-menu">--}}
+{{--                                        <li>--}}
+{{--                                            <div class="row m-0">--}}
+{{--                                                <div class="col-xl-4">--}}
+{{--                                                    <div class="link-section">--}}
+{{--                                                        <h5>women's fashion</h5>--}}
+{{--                                                        <ul>--}}
+{{--                                                            <li><a href="#">dresses</a></li>--}}
+{{--                                                            <li><a href="#">skirts</a></li>--}}
+{{--                                                            <li><a href="#">westarn wear</a></li>--}}
+{{--                                                            <li><a href="#">ethic wear</a></li>--}}
+{{--                                                            <li><a href="#">sport wear</a></li>--}}
+{{--                                                        </ul>--}}
+{{--                                                        <h5>men's fashion</h5>--}}
+{{--                                                        <ul>--}}
+{{--                                                            <li><a href="#">sports wear</a></li>--}}
+{{--                                                            <li><a href="#">western wear</a></li>--}}
+{{--                                                            <li><a href="#">ethic wear</a></li>--}}
+{{--                                                        </ul>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="col-xl-4">--}}
+{{--                                                    <div class="link-section">--}}
+{{--                                                        <h5>accessories</h5>--}}
+{{--                                                        <ul>--}}
+{{--                                                            <li><a href="#">fashion jewellery</a></li>--}}
+{{--                                                            <li><a href="#">caps and hats</a></li>--}}
+{{--                                                            <li><a href="#">precious jewellery</a></li>--}}
+{{--                                                            <li><a href="#">necklaces</a></li>--}}
+{{--                                                            <li><a href="#">earrings</a></li>--}}
+{{--                                                            <li><a href="#">wrist wear</a></li>--}}
+{{--                                                            <li><a href="#">ties</a></li>--}}
+{{--                                                            <li><a href="#">cufflinks</a></li>--}}
+{{--                                                            <li><a href="#">pockets squares</a></li>--}}
+{{--                                                        </ul>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="col-xl-4">--}}
+{{--                                                    <a href="#" class="mega-menu-banner"><img--}}
+{{--                                                            src="../assets/images/mega-menu/fashion.jpg" alt=""--}}
+{{--                                                            class="img-fluid blur-up lazyload"></a>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </li>--}}
+{{--                                    </ul>--}}
+{{--                                </li>--}}
+  @php
+  $categories = \App\Models\Category::with('children')->withCount('children')->where('parent_id',null)->get();
+  @endphp
+                                @foreach($categories as $category)
+                                <li> <a href="{{$category->slug}}">{{$category->name}}</a>
+                                    @if(count($category->children) > 0)
+
                                     <ul>
-                                        <li><a href="#">makeup</a></li>
-                                        <li><a href="#">skincare</a></li>
-                                        <li><a href="#">premium beaty</a></li>
-                                        <li> <a href="#">more</a>
-                                            <ul>
-                                                <li><a href="#">fragrances</a></li>
-                                                <li><a href="#">luxury beauty</a></li>
-                                                <li><a href="#">hair care</a></li>
-                                                <li><a href="#">tools & brushes</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li> <a href="#">Refrigerators</a>
-                                    <ul>
-                                        <li><a href="#">shopper bags</a></li>
-                                        <li><a href="#">laptop bags</a></li>
-                                        <li><a href="#">clutches</a></li>
-                                        <li> <a href="#">purses</a>
-                                            <ul>
-                                                <li><a href="#">purses</a></li>
-                                                <li><a href="#">wallets</a></li>
-                                                <li><a href="#">leathers</a></li>
-                                                <li><a href="#">satchels</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li> <a href="#">Washing Machines</a>
-                                    <ul>
-                                        <li><a href="#">sport shoes</a></li>
-                                        <li><a href="#">formal shoes</a></li>
-                                        <li><a href="#">casual shoes</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Kitchen & Home</a></li>
-                                <li><a href="#">Gaming Consoles</a></li>
-                                <li> <a href="#">cameras</a>
-                                    <ul>
-                                        <li><a href="#">fashion jewellery</a></li>
-                                        <li><a href="#">caps and hats</a></li>
-                                        <li><a href="#">precious jewellery</a></li>
-                                        <li> <a href="#">more..</a>
-                                            <ul>
-                                                <li><a href="#">necklaces</a></li>
-                                                <li><a href="#">earrings</a></li>
-                                                <li><a href="#">wrist wear</a></li>
-                                                <li> <a href="#">accessories</a>
+                                        @foreach($category->children as $cat)
+                                            <li> <a href="{{$cat->slug}}">{{$cat->name}}</a>
+                                                @if(count($cat->children) > 0)
+
                                                     <ul>
-                                                        <li><a href="#">ties</a></li>
-                                                        <li><a href="#">cufflinks</a></li>
-                                                        <li><a href="#">pockets squares</a></li>
-                                                        <li><a href="#">helmets</a></li>
-                                                        <li><a href="#">scarves</a></li>
-                                                        <li> <a href="#">more...</a>
-                                                            <ul>
-                                                                <li><a href="#">accessory gift sets</a></li>
-                                                                <li><a href="#">travel accessories</a></li>
-                                                                <li><a href="#">phone cases</a></li>
-                                                            </ul>
-                                                        </li>
+                                                        @foreach($cat->children as $cat)
+                                                            <li> <a href="{{$cat->slug}}">{{$cat->name}}</a>
+                                                                @if(count($cat->children) > 0)
+
+                                                                    <ul>
+                                                                        @foreach($cat->children as $cat)
+                                                                            <li> <a href="{{$cat->slug}}">{{$cat->name}}</a>
+                                                                        @endforeach
+
+                                                                    </ul>
+                                                            @endif
+                                                        @endforeach
+
                                                     </ul>
-                                                </li>
-                                                <li><a href="#">belts & more</a></li>
-                                                <li><a href="#">wearable</a></li>
-                                            </ul>
-                                        </li>
+                                            @endif
+                                            @endforeach
+
                                     </ul>
+                                    @endif
                                 </li>
-                                <li><a href="#">Heating & Cooling</a></li>
-                                <li><a href="#">All accessories </a></li>
-                                <li><a href="#">All Electronics </a></li>
+                                @endforeach
+
                             </ul>
                         </nav>
                     </div>
@@ -1101,43 +1062,43 @@
 <!-- footer end -->
 
 
-<!--modal popup start-->
-<div class="modal fade bd-example-modal-lg theme-modal" id="exampleModal" tabindex="-1" role="dialog"
-     aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-body modal10">
-                <div class="container-fluid p-0">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="modal-bg">
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <div class="offer-content"><img src="../assets/images/Offer-banner.png"
-                                                                class="img-fluid blur-up lazyload" alt="">
-                                    <h2>newsletter</h2>
-                                    <form
-                                        action="https://pixelstrap.us19.list-manage.com/subscribe/post?u=5a128856334b598b395f1fc9b&amp;id=082f74cbda"
-                                        class="auth-form needs-validation" method="post"
-                                        id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
-                                        target="_blank">
-                                        <div class="form-group mx-sm-3">
-                                            <input type="text" class="form-control" name="EMAIL" id="mce-EMAIL"
-                                                   placeholder="Enter your email" required="required">
-                                            <button type="submit" class="btn btn-solid"
-                                                    id="mc-submit">subscribe</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--modal popup end-->
+{{--<!--modal popup start-->--}}
+{{--<div class="modal fade bd-example-modal-lg theme-modal" id="exampleModal" tabindex="-1" role="dialog"--}}
+{{--     aria-hidden="true">--}}
+{{--    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">--}}
+{{--        <div class="modal-content">--}}
+{{--            <div class="modal-body modal10">--}}
+{{--                <div class="container-fluid p-0">--}}
+{{--                    <div class="row">--}}
+{{--                        <div class="col-12">--}}
+{{--                            <div class="modal-bg">--}}
+{{--                                <button type="button" class="btn-close" data-bs-dismiss="modal"--}}
+{{--                                        aria-label="Close"><span aria-hidden="true">&times;</span></button>--}}
+{{--                                <div class="offer-content"><img src="../assets/images/Offer-banner.png"--}}
+{{--                                                                class="img-fluid blur-up lazyload" alt="">--}}
+{{--                                    <h2>newsletter</h2>--}}
+{{--                                    <form--}}
+{{--                                        action="https://pixelstrap.us19.list-manage.com/subscribe/post?u=5a128856334b598b395f1fc9b&amp;id=082f74cbda"--}}
+{{--                                        class="auth-form needs-validation" method="post"--}}
+{{--                                        id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"--}}
+{{--                                        target="_blank">--}}
+{{--                                        <div class="form-group mx-sm-3">--}}
+{{--                                            <input type="text" class="form-control" name="EMAIL" id="mce-EMAIL"--}}
+{{--                                                   placeholder="Enter your email" required="required">--}}
+{{--                                            <button type="submit" class="btn btn-solid"--}}
+{{--                                                    id="mc-submit">subscribe</button>--}}
+{{--                                        </div>--}}
+{{--                                    </form>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</div>--}}
+{{--<!--modal popup end-->--}}
 
 
 <!-- Quick-view modal popup start-->
